@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5516093332591860485}
   - component: {fileID: 2027001979183835202}
   m_Layer: 0
-  m_Name: Basura
+  m_Name: Bolsa
   m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9489074, b: 0.42075467, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -162,9 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf1ad8c7c686b041b3e9071fdab6efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadInicial: 2
-  incrementoVelocidad: 2
   inclinacionMaxima: 1.5
+  tipo: 2
+  puntos: 0
 --- !u!61 &2027001979183835202
 BoxCollider2D:
   m_ObjectHideFlags: 0

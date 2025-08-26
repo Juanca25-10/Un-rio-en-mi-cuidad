@@ -67,5 +67,30 @@ public class GameManager : MonoBehaviour
         JsonGuardado.GuardarDatos(datos);
     }
 
+    public void CargarProgresoDesdeJson(DatosGuardados datos)
+    {
+        progresoNivel.Clear();
+        nombreUsuario = datos.nombreUsuario; //IMPORTANTE para mantenerlo sincronizado
+
+        foreach (ProgresoNivelGuardado prog in datos.progresoPorNivel)
+        {
+            progresoNivel.Add(new ProgresoPorNivel(prog.numNivel, prog.nombreUsuario)
+            {
+                puntaje = prog.puntaje,
+                nivelCompletado = prog.nivelCompletado
+            });
+        }
+    }
+
+    public void GuardarResultadoNivel(int numNivel, int puntajeFinal, bool completado)
+    {
+        var progreso = progresoNivel.Find(p => p.numNivel == numNivel);
+        if (progreso != null)
+        {
+            progreso.puntaje = puntajeFinal;
+            progreso.nivelCompletado = completado;
+            GuardarProgresoEnJson();
+        }
+    }
 
 }
