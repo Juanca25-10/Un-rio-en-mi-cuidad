@@ -12,13 +12,18 @@ public class AtaqueEnemigo : MonoBehaviour
     public float incrementoVelocidad = 0.3f; 
     private float velocidadActual;
 
+    GameControllerNivel1 gameC1;
+
     void Start()
     {
         velocidadActual = velocidadInicial;
+        gameC1 = FindObjectOfType<GameControllerNivel1>();
     }
 
     void Update()
     {
+        if (gameC1.estadoActual == EstadoRio.Limpio) return;
+
         timer -= Time.deltaTime;
 
         if (timer <= 0f)

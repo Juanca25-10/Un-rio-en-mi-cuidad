@@ -229,6 +229,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puntajeN1: {fileID: 1699244004}
+  estadoActual: 0
+  puntosParaMejorar: 200
+  puntosParaLimpiar: 400
 --- !u!4 &993812493
 Transform:
   m_ObjectHideFlags: 0
