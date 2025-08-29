@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2c8d9911ac8782a4f8ac8abe8ebf0c1f
+guid: bc2722c65fd53be43ae4b3cfcd4308e5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: buttons free_0
+      name: UI Big Play Button_0
       rect:
         serializedVersion: 2
         x: 3
-        y: 66
-        width: 42
-        height: 28
+        y: 35
+        width: 90
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f09eb2585ac0d941845ea10f50667ef
-      internalID: -28790794
+      spriteID: 93444dcef69358d4c8d97bc30fd82dc4
+      internalID: 207094598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buttons free_1
+      name: UI Big Play Button_1
       rect:
         serializedVersion: 2
-        x: 51
-        y: 66
-        width: 42
-        height: 26
+        x: 99
+        y: 35
+        width: 90
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,62 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f5b20db624caa845b3e58397b7c0174
-      internalID: -99302689
+      spriteID: be6dcfa4e7c9ecb43854c68ad451323f
+      internalID: 1494967307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buttons free_2
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 34
-        width: 42
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 43745ffe94521b547b794c01cfd0370c
-      internalID: 986228698
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buttons free_3
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 34
-        width: 42
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 12911fc295ca00140863f58c59a97dee
-      internalID: 735998593
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buttons free_4
+      name: UI Big Play Button_2
       rect:
         serializedVersion: 2
         x: 3
-        y: 2
-        width: 42
-        height: 28
+        y: 3
+        width: 90
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03555d887a8fb084ebf6fe233ecac804
-      internalID: 361260466
+      spriteID: 89bdb512cfe151a4d937ef6bc29657a3
+      internalID: 1745487481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buttons free_5
+      name: UI Big Play Button_3
       rect:
         serializedVersion: 2
-        x: 51
-        y: 2
-        width: 42
-        height: 26
+        x: 99
+        y: 3
+        width: 90
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,8 +174,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6ffd4c48dfc9484c8f0afba231c0ce2
-      internalID: -1739983191
+      spriteID: 28f2e34c8116f984ea612a896b0a4e8c
+      internalID: 717095954
       vertices: []
       indices: 
       edges: []
@@ -233,12 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      buttons free_0: -28790794
-      buttons free_1: -99302689
-      buttons free_2: 986228698
-      buttons free_3: 735998593
-      buttons free_4: 361260466
-      buttons free_5: -1739983191
+      UI Big Play Button_0: 207094598
+      UI Big Play Button_1: 1494967307
+      UI Big Play Button_2: 1745487481
+      UI Big Play Button_3: 717095954
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
