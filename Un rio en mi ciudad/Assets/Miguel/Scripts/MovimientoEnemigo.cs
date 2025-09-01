@@ -29,22 +29,20 @@ public class MovimientoEnemigo : MonoBehaviour
 
     void Update()
     {
+        // Si el río está limpio, no se mueve
         if (gameC1.estadoActual == EstadoRio.Limpio) return;
 
         // Movimiento horizontal
         transform.Translate(Vector2.right * direction * speed * Time.deltaTime);
 
-        // Animación: si se mueve, activa Run
+        // Animación de correr
         if (animator != null)
             animator.SetFloat("Speed", Mathf.Abs(speed));
 
-        // Flip del sprite según dirección
+        // Flip del sprite según la dirección
         if (spriteRenderer != null)
         {
-            if (direction > 0)
-                spriteRenderer.flipX = false;
-            else if (direction < 0)
-                spriteRenderer.flipX = true;
+            spriteRenderer.flipX = direction < 0;
         }
 
         // Cambiar dirección en los bordes

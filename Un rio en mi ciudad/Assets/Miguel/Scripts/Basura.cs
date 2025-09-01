@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,14 +12,14 @@ public class Basura : MonoBehaviour
     public float inclinacionMaxima = 1.5f;
 
     // Escalado progresivo
-    public float escalaInicial = 0.3f; // más pequeño al inicio
-    public float escalaMaxima = 1.2f;  // tamaño máximo cuando llega abajo
+    public float escalaInicial = 0.3f;
+    public float escalaMaxima = 1.2f;
     private float yInicial;
-    private float yFinal = -4f; // ajusta según la posición más baja que pueda alcanzar
+    private float yFinal = -4f;
 
     // Rotación
-    public float rotacionMax = 90f;   // velocidad máxima de giro en grados/seg
-    private float rotacionVel;        // la velocidad aleatoria de este objeto
+    public float rotacionMax = 90f;
+    private float rotacionVel;
 
     // Tipo de basura y puntos
     public TipoBasura tipo;
@@ -40,10 +40,10 @@ public class Basura : MonoBehaviour
         bounceMat.friction = 0f;
         rb.sharedMaterial = bounceMat;
 
-        // Guardar la posición inicial en Y
+        // Guardar posición inicial en Y
         yInicial = transform.position.y;
 
-        // Escala inicial pequeña
+        // Escala inicial
         transform.localScale = Vector3.one * escalaInicial;
 
         // Velocidad de rotación aleatoria
@@ -74,6 +74,5 @@ public class Basura : MonoBehaviour
         transform.Rotate(Vector3.forward, rotacionVel * Time.deltaTime);
     }
 }
-
 
 
