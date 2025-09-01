@@ -8,17 +8,29 @@ public class AtaqueEnemigo : MonoBehaviour
     public float spawnInterval = 1f;
     private float timer = 0f;
 
-    public float velocidadInicial = 2f;  
-    public float incrementoVelocidad = 0.3f; 
+    public float velocidadInicial = 2f;
+    public float incrementoVelocidad = 0.3f;
     private float velocidadActual;
+
+    private bool isAttacking = false; // Para controlar si está atacando
+    private Animator animator;
+    private MovimientoEnemigo movimiento; // referencia al script de movimiento
+
+    GameControllerNivel1 gameC1;
 
     void Start()
     {
         velocidadActual = velocidadInicial;
+        gameC1 = FindObjectOfType<GameControllerNivel1>();
+        animator = GetComponent<Animator>();
+        movimiento = GetComponent<MovimientoEnemigo>();
     }
 
     void Update()
     {
+        if (gameC1.estadoActual == EstadoRio.Limpio) return;
+        if (isAttacking) return; // no hacer nada si está atacando
+
         timer -= Time.deltaTime;
 
         if (timer <= 0f)

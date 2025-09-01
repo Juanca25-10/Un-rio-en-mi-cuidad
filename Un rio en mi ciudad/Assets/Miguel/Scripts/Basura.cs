@@ -11,17 +11,17 @@ public class Basura : MonoBehaviour
 
     public float inclinacionMaxima = 1.5f;
 
-   
-    public float escalaInicial = 0.3f; 
-    public float escalaMaxima = 1.2f;  
+    // Escalado progresivo
+    public float escalaInicial = 0.3f;
+    public float escalaMaxima = 1.2f;
     private float yInicial;
-    private float yFinal = -4f; 
+    private float yFinal = -4f;
 
-    
-    public float rotacionMax = 90f;   
-    private float rotacionVel;        
+    // Rotación
+    public float rotacionMax = 90f;
+    private float rotacionVel;
 
-  
+    // Tipo de basura y puntos
     public TipoBasura tipo;
     public int puntos;
 
@@ -40,11 +40,13 @@ public class Basura : MonoBehaviour
         bounceMat.friction = 0f;
         rb.sharedMaterial = bounceMat;
 
+        // Guardar posición inicial en Y
         yInicial = transform.position.y;
 
-        
+        // Escala inicial
         transform.localScale = Vector3.one * escalaInicial;
 
+        // Velocidad de rotación aleatoria
         rotacionVel = Random.Range(-rotacionMax, rotacionMax);
 
         // Asignar puntos por tipo (si no lo pusiste manual en el Inspector)
