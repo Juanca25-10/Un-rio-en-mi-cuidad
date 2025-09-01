@@ -165,13 +165,6 @@ MonoBehaviour:
   velocidadInicial: 2
   incrementoVelocidad: 2
   inclinacionMaxima: 1.5
-<<<<<<< Updated upstream:Un rio en mi ciudad/Assets/Miguel/PreFabs/Basura.prefab
-=======
-  escalaInicial: 0.1
-  escalaMaxima: 0.2
-  tipo: 0
-  puntos: 0
->>>>>>> Stashed changes:Un rio en mi ciudad/Assets/Miguel/PreFabs/Botella.prefab
 --- !u!61 &2027001979183835202
 BoxCollider2D:
   m_ObjectHideFlags: 0
