@@ -3,43 +3,44 @@
 public class DisparoRed : MonoBehaviour
 {
     public GameObject redPrefab;
-    public float redSpeed = 10f; 
-    public float fireRate = 0.5f; 
-    public float speedIncrease = 0.5f; 
-    public float maxSpeed = 17f;      
+    public float redSpeed = 10f;
+    public float fireRate = 0.5f;
+    public float speedIncrease = 0.5f;
+    public float maxSpeed = 17f;
 
     private Movimiento_personaje movimientoJugador;
+    private Animator animator;
     private bool canShoot = true;
 
     void Start()
     {
         movimientoJugador = GetComponent<Movimiento_personaje>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.N) && canShoot)
         {
-            Disparar();
+            // Reproduce la animación en lugar de disparar directo
+            animator.SetTrigger("Disparar");
+            canShoot = false;
+            Invoke(nameof(ResetShoot), fireRate);
         }
     }
 
-    void Disparar()
+    // Este método se llamará desde el Animation Event
+    public void LanzarRed()
     {
-        canShoot = false;
-
         GameObject red = Instantiate(redPrefab, movimientoJugador.firePoint.position, Quaternion.identity);
         Rigidbody2D rb = red.GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(movimientoJugador.GetFacingDirection() * redSpeed, 0f);
 
-       
         if (redSpeed < maxSpeed)
         {
             redSpeed += speedIncrease;
-            redSpeed = Mathf.Min(redSpeed, maxSpeed); 
+            redSpeed = Mathf.Min(redSpeed, maxSpeed);
         }
-
-        Invoke(nameof(ResetShoot), fireRate);
     }
 
     void ResetShoot()

@@ -13,17 +13,45 @@ public class MovimientoEnemigo : MonoBehaviour
     public float speedIncreaseRate = 0.1f;  
     public float maxSpeed = 10f;           
 
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
         changeDirTimer = Random.Range(2f, 5f);
+<<<<<<< Updated upstream
+=======
+        gameC1 = FindObjectOfType<GameControllerNivel1>();
+
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+>>>>>>> Stashed changes
     }
 
     void Update()
     {
+<<<<<<< Updated upstream
         
         transform.Translate(Vector2.right * direction * speed * Time.deltaTime);
 
         
+=======
+        if (gameC1.estadoActual == EstadoRio.Limpio) return;
+
+        // Movimiento horizontal
+        transform.Translate(Vector2.right * direction * speed * Time.deltaTime);
+
+        // Animación: si se mueve, activa Run
+        animator.SetFloat("Speed", Mathf.Abs(speed));
+
+        // Flip del sprite según dirección
+        if (direction > 0)
+            spriteRenderer.flipX = false;
+        else if (direction < 0)
+            spriteRenderer.flipX = true;
+
+        // Cambiar dirección en los bordes
+>>>>>>> Stashed changes
         if (transform.position.x >= maxX)
         {
             direction = -1;
@@ -33,7 +61,11 @@ public class MovimientoEnemigo : MonoBehaviour
             direction = 1;
         }
 
+<<<<<<< Updated upstream
         
+=======
+        // Cambio de dirección aleatorio
+>>>>>>> Stashed changes
         changeDirTimer -= Time.deltaTime;
         if (changeDirTimer <= 0f)
         {
@@ -41,7 +73,11 @@ public class MovimientoEnemigo : MonoBehaviour
             changeDirTimer = Random.Range(2f, 5f);
         }
 
+<<<<<<< Updated upstream
         
+=======
+        // Aumentar velocidad progresiva
+>>>>>>> Stashed changes
         if (speed < maxSpeed)
         {
             speed += speedIncreaseRate * Time.deltaTime;
