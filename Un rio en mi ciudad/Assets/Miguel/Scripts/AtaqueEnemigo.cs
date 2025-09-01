@@ -12,34 +12,13 @@ public class AtaqueEnemigo : MonoBehaviour
     public float incrementoVelocidad = 0.3f; 
     private float velocidadActual;
 
-<<<<<<< Updated upstream
     void Start()
     {
         velocidadActual = velocidadInicial;
-=======
-    private bool isAttacking = false; // Para controlar si está atacando
-    private Animator animator;
-    private MovimientoEnemigo movimiento; // referencia al script de movimiento
-
-    GameControllerNivel1 gameC1;
-
-    void Start()
-    {
-        velocidadActual = velocidadInicial;
-        gameC1 = FindObjectOfType<GameControllerNivel1>();
-        animator = GetComponent<Animator>();
-        movimiento = GetComponent<MovimientoEnemigo>();
->>>>>>> Stashed changes
     }
 
     void Update()
     {
-<<<<<<< Updated upstream
-=======
-        if (gameC1.estadoActual == EstadoRio.Limpio) return;
-        if (isAttacking) return; // no hacer nada si está atacando
-
->>>>>>> Stashed changes
         timer -= Time.deltaTime;
 
         if (timer <= 0f)

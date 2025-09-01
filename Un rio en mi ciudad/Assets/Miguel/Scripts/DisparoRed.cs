@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class DisparoRed : MonoBehaviour
 {
@@ -22,14 +22,13 @@ public class DisparoRed : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.N) && canShoot)
         {
-            // Reproduce la animación en lugar de disparar directo
+            
             animator.SetTrigger("Disparar");
             canShoot = false;
             Invoke(nameof(ResetShoot), fireRate);
         }
     }
 
-    // Este método se llamará desde el Animation Event
     public void LanzarRed()
     {
         GameObject red = Instantiate(redPrefab, movimientoJugador.firePoint.position, Quaternion.identity);
