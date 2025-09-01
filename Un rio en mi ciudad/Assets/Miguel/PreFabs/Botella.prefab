@@ -163,6 +163,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inclinacionMaxima: 1.5
+  escalaInicial: 0.1
+  escalaMaxima: 0.2
+  rotacionMax: 90
+  tipo: 0
+  puntos: 0
 --- !u!61 &2027001979183835202
 BoxCollider2D:
   m_ObjectHideFlags: 0
