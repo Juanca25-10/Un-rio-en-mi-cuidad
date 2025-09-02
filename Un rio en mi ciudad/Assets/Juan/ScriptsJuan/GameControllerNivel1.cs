@@ -3,30 +3,40 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-
 public enum EstadoRio
 {
-    Sucio,        
-    Mejorando,    
-    Limpio        
+    Sucio,
+    Mejorando,
+    Limpio
 }
+
 public class GameControllerNivel1 : MonoBehaviour
 {
     public static GameControllerNivel1 Instance { get; private set; }
+
+    [Header("Puntaje y Estado del Río")]
     private int puntajeNivel = 0;
     private bool nivelCompletado = false;
-
     public TextMeshProUGUI puntajeN1;
     public EstadoRio estadoActual = EstadoRio.Sucio;
-
     public int puntosParaMejorar = 300;
     public int puntosParaLimpiar = 600;
 
-    public void Start()
+    [Header("Sistema de Vidas")]
+    public List<GameObject> corazones; // arrastra aquí los 6 corazones en el inspector
+    private int vidasRestantes;
+
+    public MoviemientoAgua aguaController;
+
+    void Start()
     {
-       puntajeN1.text = "Puntaje: " + puntajeNivel.ToString();
+        puntajeN1.text = "Puntaje: " + puntajeNivel.ToString();
+
+        // Inicia con todas las vidas
+        vidasRestantes = corazones.Count;
     }
 
+ 
     public void AgregarPuntos(int puntos)
     {
         puntajeNivel += puntos;
@@ -56,10 +66,7 @@ public class GameControllerNivel1 : MonoBehaviour
 
     private void ActivarEventoIntermedio()
     {
-        // Acá podés poner efectos visuales:
-        // - Cambiar el color del agua
-        // - Instanciar peces o aves
-        // - Mostrar mensaje narrativo
+        // Efectos visuales intermedios
     }
 
     private void Win()
@@ -69,17 +76,39 @@ public class GameControllerNivel1 : MonoBehaviour
             nivelCompletado = true;
 
             //GameManager.Instance.GuardarResultadoNivel(1, puntajeNivel, true);
-
             Debug.Log("Nivel 1 completado . Puntaje final: " + puntajeNivel);
 
-                // Mostrar pantalla de victoria
-                //UIManager.Instance.MostrarPantallaVictoria(puntajeNivel);
+            //UIManager.Instance.MostrarPantallaVictoria(puntajeNivel);
         }
-        
+    }
+
+    public void PerderVida()
+    {
+        if (vidasRestantes <= 0) return;
+
+        vidasRestantes--;
+
+        if (vidasRestantes >= 0 && vidasRestantes < corazones.Count)
+        {
+            corazones[vidasRestantes].SetActive(false);
+        }
+
+        //  Oscurecer el agua
+        if (aguaController != null)
+        {
+            aguaController.OscurecerAgua(0.1f);
+        }
+
+        if (vidasRestantes <= 0)
+        {
+            FallarNivel();
+        }
     }
 
     public void FallarNivel()
     {
         Debug.Log("Nivel 1 fallido. No se guarda puntaje.");
+        Time.timeScale = 0f; // Detiene el juego
+        // Aquí puedes lanzar un menú de derrota
     }
 }

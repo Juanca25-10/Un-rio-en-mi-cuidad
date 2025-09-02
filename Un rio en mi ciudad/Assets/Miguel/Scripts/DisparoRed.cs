@@ -33,8 +33,21 @@ public class DisparoRed : MonoBehaviour
     {
         GameObject red = Instantiate(redPrefab, movimientoJugador.firePoint.position, Quaternion.identity);
         Rigidbody2D rb = red.GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(movimientoJugador.GetFacingDirection() * redSpeed, 0f);
 
+        // Dirección del jugador (-1 = izquierda, 1 = derecha)
+        int direccion = movimientoJugador.GetFacingDirection();
+
+        // Aplicamos velocidad
+        rb.velocity = new Vector2(direccion * redSpeed, 0f);
+
+        // Reflejamos el sprite si va a la izquierda
+        SpriteRenderer sr = red.GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.flipX = (direccion < 0);
+        }
+
+        // Aumentamos velocidad progresivamente
         if (redSpeed < maxSpeed)
         {
             redSpeed += speedIncrease;
