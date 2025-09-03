@@ -26,6 +26,7 @@ public class GameControllerNivel1 : MonoBehaviour
     public List<GameObject> corazones; // arrastra aquí los 6 corazones en el inspector
     public AudioSource errorSound;
     public AudioSource gameOverSound;
+    public AudioSource winSound;
     private int vidasRestantes;
 
     public MoviemientoAgua aguaController;
@@ -76,6 +77,11 @@ public class GameControllerNivel1 : MonoBehaviour
         if (!nivelCompletado)
         {
             nivelCompletado = true;
+
+            if (winSound != null && winSound.clip != null)
+            {
+                winSound.PlayOneShot(winSound.clip);
+            }
 
             //GameManager.Instance.GuardarResultadoNivel(1, puntajeNivel, true);
             Debug.Log("Nivel 1 completado . Puntaje final: " + puntajeNivel);
