@@ -1248,6 +1248,7 @@ MonoBehaviour:
   - {fileID: 74941502}
   - {fileID: 23166253}
   - {fileID: 1292553941}
+  gameOverPanel: {fileID: 0}
   aguaController: {fileID: 1393869945}
 --- !u!4 &280251737
 Transform:
@@ -1869,8 +1870,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 755771267}
-        m_TargetAssemblyTypeName: MenuPausa, Assembly-CSharp
-        m_MethodName: Salir
+        m_TargetAssemblyTypeName: GameControllerNivel1, Assembly-CSharp
+        m_MethodName: SalirJuego
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4356,11 +4357,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 755771262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba3cb88c85a993c45a17fe160dae6003, type: 3}
+  m_Script: {fileID: 11500000, guid: 33f9c6bd36374374eb2068d17ce4f6c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botonPausa: {fileID: 0}
-  menuPausa: {fileID: 0}
+  puntajeN1: {fileID: 0}
+  estadoActual: 0
+  puntosParaMejorar: 300
+  puntosParaLimpiar: 600
+  corazones: []
+  gameOverPanel: {fileID: 938840213}
+  aguaController: {fileID: 0}
 --- !u!1 &772430862
 GameObject:
   m_ObjectHideFlags: 0
@@ -4424,7 +4430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &938840214
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4501,7 +4507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!156049354 &978962668
 Grid:
   m_ObjectHideFlags: 0
@@ -4615,8 +4621,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 755771267}
-        m_TargetAssemblyTypeName: MenuPausa, Assembly-CSharp
-        m_MethodName: Reiniciar
+        m_TargetAssemblyTypeName: GameControllerNivel1, Assembly-CSharp
+        m_MethodName: ReiniciarJuego
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4683,7 +4689,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1178177429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6998,7 +7004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1706842786
 Transform:
   m_ObjectHideFlags: 0
@@ -7108,7 +7114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1753816969
 Transform:
   m_ObjectHideFlags: 0
@@ -8321,7 +8327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1823343984
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8544,6 +8550,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1785118560}
+  - {fileID: 755771266}
   - {fileID: 1178177433}
   - {fileID: 978962669}
   - {fileID: 1706842786}
@@ -8554,4 +8561,3 @@ SceneRoots:
   - {fileID: 1291963985}
   - {fileID: 286124953}
   - {fileID: 1360641928}
-  - {fileID: 755771266}
