@@ -9,4 +9,13 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(nombreEscena);
     }
+
+    void Awake()
+    {
+        SceneLoader loader = FindObjectOfType<SceneLoader>();
+        if (loader != null)
+        {
+            loader.ResetFade();
+        }
+    }
 }

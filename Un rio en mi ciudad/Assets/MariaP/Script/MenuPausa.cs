@@ -33,4 +33,9 @@ public class MenuPausa : MonoBehaviour
         Debug.Log("Salir del juego");
         Application.Quit();
     }
+
+    public void CambiarEscena(string nombreEscena)
+    {
+        SceneManager.LoadScene(nombreEscena);
+    }
 }

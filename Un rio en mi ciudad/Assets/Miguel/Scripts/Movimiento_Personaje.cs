@@ -44,7 +44,7 @@ public class Movimiento_personaje : MonoBehaviour
             animator.SetFloat("LastMoveX", moveX);
             animator.SetFloat("LastMoveY", moveY);
         }
-        Debug.Log($"Speed: {move.sqrMagnitude}, MoveX: {moveX}, MoveY: {moveY}");
+        //Debug.Log($"Speed: {move.sqrMagnitude}, MoveX: {moveX}, MoveY: {moveY}");
         // ----------------- Flip y FirePoint -----------------
         if (moveX > 0)
         {

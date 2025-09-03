@@ -19,17 +19,21 @@ public class GameControllerNivel1 : MonoBehaviour
     private bool nivelCompletado = false;
     public TextMeshProUGUI puntajeN1;
     public EstadoRio estadoActual = EstadoRio.Sucio;
-    public int puntosParaMejorar = 300;
-    public int puntosParaLimpiar = 600;
+    public int puntosParaMejorar = 100;
+    public int puntosParaLimpiar = 250;
 
     [Header("Sistema de Vidas")]
     public List<GameObject> corazones; // arrastra aquí los 6 corazones en el inspector
-    public AudioSource errorSound;
-    public AudioSource gameOverSound;
-    public AudioSource winSound;
+    public AudioClip errorSound;
+    public AudioClip gameOverSound;
+    public AudioClip winSound;
+    public AudioClip puntoSound;
     private int vidasRestantes;
 
+    private AudioSource audioSource;
+
     public MoviemientoAgua aguaController;
+    public GameOverManager goManager;
 
     void Start()
     {
@@ -37,12 +41,19 @@ public class GameControllerNivel1 : MonoBehaviour
 
         // Inicia con todas las vidas
         vidasRestantes = corazones.Count;
+
+        audioSource = GetComponent<AudioSource>();
+        goManager = FindObjectOfType<GameOverManager>();
     }
 
  
     public void AgregarPuntos(int puntos)
     {
         puntajeNivel += puntos;
+        if (puntoSound != null && audioSource.clip != null)
+        {
+            audioSource.PlayOneShot(puntoSound);
+        }
         puntajeN1.text = "Puntaje: " + puntajeNivel.ToString();
         Debug.Log("Puntaje actual del nivel: " + puntajeNivel);
 
@@ -78,15 +89,18 @@ public class GameControllerNivel1 : MonoBehaviour
         {
             nivelCompletado = true;
 
-            if (winSound != null && winSound.clip != null)
+            if (winSound != null && audioSource.clip != null)
             {
-                winSound.PlayOneShot(winSound.clip);
+                audioSource.PlayOneShot(winSound);
             }
 
             //GameManager.Instance.GuardarResultadoNivel(1, puntajeNivel, true);
             Debug.Log("Nivel 1 completado . Puntaje final: " + puntajeNivel);
 
-            //UIManager.Instance.MostrarPantallaVictoria(puntajeNivel);
+            if (goManager != null)
+            {
+                goManager.MostrarPanelWin();
+            }
         }
     }
 
@@ -94,9 +108,9 @@ public class GameControllerNivel1 : MonoBehaviour
     {
         if (vidasRestantes <= 0) return;
 
-        if (errorSound != null && errorSound.clip != null)
+        if (errorSound != null && audioSource.clip != null)
         {
-            errorSound.PlayOneShot(errorSound.clip);
+            audioSource.PlayOneShot(errorSound);
         }
 
         vidasRestantes--;
@@ -121,19 +135,24 @@ public class GameControllerNivel1 : MonoBehaviour
     public void FallarNivel()
     {
 
-        if (gameOverSound != null && gameOverSound.clip != null)
+        if (gameOverSound != null && audioSource.clip != null)
         {
-            gameOverSound.PlayOneShot(gameOverSound.clip);
+            audioSource.PlayOneShot(gameOverSound);
         }
 
         Debug.Log("Nivel 1 fallido. No se guarda puntaje.");
         Time.timeScale = 0f; // Detiene el juego
         // Aquí puedes lanzar un menú de derrota
 
-        GameOverManager goManager = FindObjectOfType<GameOverManager>();
+        
         if (goManager != null)
         {
             goManager.MostrarGameOver();
         }
+    }
+
+    public void BotonGuardarScoreNombre()
+    {
+        Debug.Log("Guardando Puntaje con Nombre");
     }
 }

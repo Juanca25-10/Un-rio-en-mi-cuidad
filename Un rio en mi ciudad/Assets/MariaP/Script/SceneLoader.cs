@@ -7,26 +7,29 @@ using UnityEngine.UI;
 public class SceneLoader : MonoBehaviour
 {
     [Header("Scene Settings")]
-    public string sceneToLoad; // Nombre de la escena a cargar (lo pones en el inspector)
+    public string sceneToLoad; // Nombre de la escena a cargar
     public float fadeDuration = 1f; // Duración del fade
 
     [Header("Fade UI")]
-    public Image fadeImage; // Imagen negra que cubre la pantalla
+    public CanvasGroup fadeGroup; // El CanvasGroup que controla el fade
 
     private void Start()
     {
-        if (fadeImage != null)
+        if (fadeGroup != null)
         {
-            fadeImage.gameObject.SetActive(true);
+            fadeGroup.gameObject.SetActive(true);
 
-            // Bloquea clicks solo al inicio mientras está haciendo fade in
-            fadeImage.raycastTarget = true;
+            // Arranca completamente opaco
+            fadeGroup.alpha = 1f;
+            fadeGroup.blocksRaycasts = true;
+            fadeGroup.interactable = true;
 
+            Debug.Log("Iniciando FadeIn");
             StartCoroutine(FadeIn());
         }
     }
 
-    // Llamar a esta función desde un botón
+    // Llamar a esta función desde un botón o evento
     public void LoadScene()
     {
         StartCoroutine(FadeOutAndLoad());
@@ -35,43 +38,49 @@ public class SceneLoader : MonoBehaviour
     private IEnumerator FadeIn()
     {
         float t = fadeDuration;
-        Color c = fadeImage.color;
 
         while (t > 0)
         {
-            t -= Time.deltaTime;
-            c.a = t / fadeDuration;
-            fadeImage.color = c;
+            t -= Time.unscaledDeltaTime;
+            fadeGroup.alpha = Mathf.Clamp01(t / fadeDuration);
             yield return null;
         }
 
-        c.a = 0;
-        fadeImage.color = c;
+        fadeGroup.alpha = 0f;
+        fadeGroup.blocksRaycasts = false;
+        fadeGroup.interactable = false;
 
-        // Cuando termina el fade in → deja pasar clicks
-        fadeImage.raycastTarget = false;
+        Debug.Log("FadeIn completado");
     }
 
     private IEnumerator FadeOutAndLoad()
     {
-        float t = 0;
-        Color c = fadeImage.color;
+        float t = 0f;
 
-        // Bloquea clicks durante el fade out
-        fadeImage.raycastTarget = true;
+        fadeGroup.blocksRaycasts = true;
+        fadeGroup.interactable = true;
 
         while (t < fadeDuration)
         {
-            t += Time.deltaTime;
-            c.a = t / fadeDuration;
-            fadeImage.color = c;
+            t += Time.unscaledDeltaTime;
+            fadeGroup.alpha = Mathf.Clamp01(t / fadeDuration);
             yield return null;
         }
 
-        c.a = 1;
-        fadeImage.color = c;
+        fadeGroup.alpha = 1f;
 
-        // Cambiar de escena cuando ya está negro
         SceneManager.LoadScene(sceneToLoad);
+    }
+
+    // Para resetear el fade desde otras escenas (opcional)
+    public void ResetFade()
+    {
+        if (fadeGroup != null)
+        {
+            fadeGroup.alpha = 1f;
+            fadeGroup.blocksRaycasts = true;
+            fadeGroup.interactable = true;
+            StartCoroutine(FadeIn());
+        }
     }
 }

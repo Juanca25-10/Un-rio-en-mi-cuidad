@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameOverManager : MonoBehaviour
 {
     [Header("UI")]
-    public GameObject gameOverPanel; 
+    public GameObject gameOverPanel;
+    public GameObject panelWin;
 
     void Start()
     {
@@ -21,6 +22,13 @@ public class GameOverManager : MonoBehaviour
             gameOverPanel.SetActive(true);
     }
 
+    public void MostrarPanelWin()
+    {
+        Time.timeScale = 0f; // Pausar el juego
+        if (panelWin != null)
+            panelWin.SetActive(true);
+    }
+
     public void ReiniciarJuego()
     {
         Time.timeScale = 1f; // reactivar el tiempo
@@ -31,5 +39,10 @@ public class GameOverManager : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Saliendo del juego...");
+    }
+
+    public void CambiarEscena(string nombreEscena)
+    {
+        SceneManager.LoadScene(nombreEscena);
     }
 }
