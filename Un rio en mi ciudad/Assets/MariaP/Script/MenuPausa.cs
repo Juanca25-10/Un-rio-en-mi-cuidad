@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MenuPausa : MonoBehaviour
 {
-    private void Pausa()
+    public void Pausa()
     {
-        Time.timeScale = 0f;
+        {
+            Time.timeScale = 0f;
+        } 
     }
 }
