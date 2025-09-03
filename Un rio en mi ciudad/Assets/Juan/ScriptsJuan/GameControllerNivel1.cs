@@ -129,5 +129,11 @@ public class GameControllerNivel1 : MonoBehaviour
         Debug.Log("Nivel 1 fallido. No se guarda puntaje.");
         Time.timeScale = 0f; // Detiene el juego
         // Aquí puedes lanzar un menú de derrota
+
+        GameOverManager goManager = FindObjectOfType<GameOverManager>();
+        if (goManager != null)
+        {
+            goManager.MostrarGameOver();
+        }
     }
 }
