@@ -24,6 +24,8 @@ public class GameControllerNivel1 : MonoBehaviour
 
     [Header("Sistema de Vidas")]
     public List<GameObject> corazones; // arrastra aquí los 6 corazones en el inspector
+    public AudioSource errorSound;
+    public AudioSource gameOverSound;
     private int vidasRestantes;
 
     public MoviemientoAgua aguaController;
@@ -86,6 +88,11 @@ public class GameControllerNivel1 : MonoBehaviour
     {
         if (vidasRestantes <= 0) return;
 
+        if (errorSound != null && errorSound.clip != null)
+        {
+            errorSound.PlayOneShot(errorSound.clip);
+        }
+
         vidasRestantes--;
 
         if (vidasRestantes >= 0 && vidasRestantes < corazones.Count)
@@ -107,6 +114,12 @@ public class GameControllerNivel1 : MonoBehaviour
 
     public void FallarNivel()
     {
+
+        if (gameOverSound != null && gameOverSound.clip != null)
+        {
+            gameOverSound.PlayOneShot(gameOverSound.clip);
+        }
+
         Debug.Log("Nivel 1 fallido. No se guarda puntaje.");
         Time.timeScale = 0f; // Detiene el juego
         // Aquí puedes lanzar un menú de derrota
