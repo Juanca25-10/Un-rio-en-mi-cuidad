@@ -8,6 +8,7 @@ public class RecogerBasura : MonoBehaviour
     GameControllerNivel1 gameC1;
     public GameObject floatingTextPrefab;
     public Canvas canvas;
+    public AudioSource pickupSound;
 
     void Start()
     {
@@ -25,6 +26,12 @@ public class RecogerBasura : MonoBehaviour
 
                 // ✅ Mandamos los puntos al GameController del nivel
                 gameC1.AgregarPuntos(basura.puntos);
+
+
+                if (pickupSound != null && pickupSound.clip != null)
+                {
+                    pickupSound.PlayOneShot(pickupSound.clip);
+                }
 
                 if (floatingTextPrefab != null && canvas != null)
                 {
