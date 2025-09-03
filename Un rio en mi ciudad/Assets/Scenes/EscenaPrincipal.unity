@@ -1248,7 +1248,6 @@ MonoBehaviour:
   - {fileID: 74941502}
   - {fileID: 23166253}
   - {fileID: 1292553941}
-  gameOverPanel: {fileID: 0}
   aguaController: {fileID: 1393869945}
 --- !u!4 &280251737
 Transform:
@@ -4314,7 +4313,7 @@ Canvas:
   m_GameObject: {fileID: 755771262}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1785118559}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -4365,7 +4364,6 @@ MonoBehaviour:
   puntosParaMejorar: 300
   puntosParaLimpiar: 600
   corazones: []
-  gameOverPanel: {fileID: 938840213}
   aguaController: {fileID: 0}
 --- !u!1 &772430862
 GameObject:
@@ -8550,7 +8548,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1785118560}
-  - {fileID: 755771266}
   - {fileID: 1178177433}
   - {fileID: 978962669}
   - {fileID: 1706842786}
@@ -8561,3 +8558,4 @@ SceneRoots:
   - {fileID: 1291963985}
   - {fileID: 286124953}
   - {fileID: 1360641928}
+  - {fileID: 755771266}

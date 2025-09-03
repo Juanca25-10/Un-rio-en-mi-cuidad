@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public enum EstadoRio
 {
@@ -27,9 +26,6 @@ public class GameControllerNivel1 : MonoBehaviour
     public List<GameObject> corazones; // arrastra aquí los 6 corazones en el inspector
     private int vidasRestantes;
 
-    [Header("UI Game Over")]
-    public GameObject gameOverPanel;
-
     public MoviemientoAgua aguaController;
 
     void Start()
@@ -38,9 +34,6 @@ public class GameControllerNivel1 : MonoBehaviour
 
         // Inicia con todas las vidas
         vidasRestantes = corazones.Count;
-
-        if (gameOverPanel != null)
-            gameOverPanel.SetActive(false);
     }
 
  
@@ -117,20 +110,5 @@ public class GameControllerNivel1 : MonoBehaviour
         Debug.Log("Nivel 1 fallido. No se guarda puntaje.");
         Time.timeScale = 0f; // Detiene el juego
         // Aquí puedes lanzar un menú de derrota
-
-        if (gameOverPanel != null)
-            gameOverPanel.SetActive(true); 
-    }
-
-    public void ReiniciarJuego()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void SalirJuego()
-    {
-        Application.Quit();
-        Debug.Log("Saliendo del juego...");
     }
 }
