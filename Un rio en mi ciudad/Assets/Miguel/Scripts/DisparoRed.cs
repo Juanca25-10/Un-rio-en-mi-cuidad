@@ -8,6 +8,8 @@ public class DisparoRed : MonoBehaviour
     public float speedIncrease = 0.5f;
     public float maxSpeed = 17f;
 
+    public AudioSource shootSound;
+
     private Movimiento_personaje movimientoJugador;
     private Animator animator;
     private bool canShoot = true;
@@ -52,6 +54,11 @@ public class DisparoRed : MonoBehaviour
         {
             redSpeed += speedIncrease;
             redSpeed = Mathf.Min(redSpeed, maxSpeed);
+        }
+
+        if (shootSound != null && shootSound.clip != null)
+        {
+            shootSound.PlayOneShot(shootSound.clip);
         }
     }
 
