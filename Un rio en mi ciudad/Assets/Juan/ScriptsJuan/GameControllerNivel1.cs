@@ -22,6 +22,10 @@ public class GameControllerNivel1 : MonoBehaviour
     public int puntosParaMejorar = 100;
     public int puntosParaLimpiar = 250;
 
+    private float tiempoInicio;
+    private float tiempoJugado; // Lo guardaremos al final
+    public TMP_InputField inputNombre; // Arrástralo desde el inspector
+
     [Header("Sistema de Vidas")]
     public List<GameObject> corazones; // arrastra aquí los 6 corazones en el inspector
     public AudioClip errorSound;
@@ -39,11 +43,11 @@ public class GameControllerNivel1 : MonoBehaviour
     {
         puntajeN1.text = "Puntaje: " + puntajeNivel.ToString();
 
-        // Inicia con todas las vidas
         vidasRestantes = corazones.Count;
-
         audioSource = GetComponent<AudioSource>();
         goManager = FindObjectOfType<GameOverManager>();
+
+        tiempoInicio = Time.time; // Empieza a contar
     }
 
  
@@ -97,6 +101,8 @@ public class GameControllerNivel1 : MonoBehaviour
             //GameManager.Instance.GuardarResultadoNivel(1, puntajeNivel, true);
             Debug.Log("Nivel 1 completado . Puntaje final: " + puntajeNivel);
 
+            tiempoJugado = Time.time - tiempoInicio;
+
             if (goManager != null)
             {
                 goManager.MostrarPanelWin();
@@ -144,7 +150,8 @@ public class GameControllerNivel1 : MonoBehaviour
         Time.timeScale = 0f; // Detiene el juego
         // Aquí puedes lanzar un menú de derrota
 
-        
+        tiempoJugado = Time.time - tiempoInicio;
+
         if (goManager != null)
         {
             goManager.MostrarGameOver();
@@ -154,5 +161,25 @@ public class GameControllerNivel1 : MonoBehaviour
     public void BotonGuardarScoreNombre()
     {
         Debug.Log("Guardando Puntaje con Nombre");
+
+        string nombreIngresado = inputNombre.text.Trim();
+
+        if (string.IsNullOrEmpty(nombreIngresado))
+        {
+            nombreIngresado = "SinNombre";
+        }
+
+        // Asigna el nombre al GameManager
+        GameManager.Instance.nombreUsuarioActual = nombreIngresado;
+
+        // Guardar entrada en el ranking
+        GameManager.Instance.GuardarResultadoNivel(
+            puntajeNivel,
+            nivelCompletado,     // Esto debería ser true si llegas aquí
+            vidasRestantes,
+            tiempoJugado
+        );
+
+        Debug.Log($"Puntaje guardado: {nombreIngresado} - {puntajeNivel} puntos - {tiempoJugado} seg");
     }
 }

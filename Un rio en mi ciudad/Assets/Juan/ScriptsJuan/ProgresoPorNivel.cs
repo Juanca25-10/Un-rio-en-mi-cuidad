@@ -5,18 +5,20 @@ using UnityEngine;
 [System.Serializable]
 public class ProgresoPorNivel
 {
-    public int numNivel;
+    //public int numNivel;
     public int puntaje;
     public bool nivelCompletado;
+    public int cantidadVidasRestantes;
     public string nombreUsuario;
 
     public float tiempoJugado;
 
 
-    public ProgresoPorNivel(int numeroNivel, string nombreP)
+    public ProgresoPorNivel(string nombreP)
     {
         nombreUsuario = nombreP;
-        numNivel = numeroNivel;
+        //numNivel = numeroNivel;
+        cantidadVidasRestantes = 6;
         puntaje = 0;
         nivelCompletado = false;
     }

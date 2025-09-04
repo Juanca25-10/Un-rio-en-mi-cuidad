@@ -931,7 +931,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingTextPrefab: {fileID: 3501740475625152148, guid: 6591d3662e67b194091563dd5823ef22, type: 3}
   canvas: {fileID: 1178177432}
-  pickupSound: {fileID: 0}
 --- !u!114 &154034392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1399,6 +1398,7 @@ MonoBehaviour:
   estadoActual: 0
   puntosParaMejorar: 100
   puntosParaLimpiar: 250
+  inputNombre: {fileID: 1098315997}
   corazones:
   - {fileID: 166421061}
   - {fileID: 57278224}
@@ -1439,7 +1439,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 64bc870588645184fa5661a3c44569eb, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.311
+  m_Volume: 0.19
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -10106,6 +10106,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 755771267}
+        m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
+        m_MethodName: CambiarEscena
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Menu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1968020707

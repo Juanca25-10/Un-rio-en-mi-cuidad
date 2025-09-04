@@ -867,6 +867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18f26ac0c89c6d40ac1427b479c5bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rankingText: {fileID: 166091395}
 --- !u!1 &637993005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,7 +1534,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 944993679}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 592082705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: SalirJuego
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &944993679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2497,7 +2510,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0397b19a400e42349a26f70890adaeb8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.347
+  m_Volume: 0.097
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3285,8 +3298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd950e799d266e4ea3a26cfb5517580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progresoNivel: []
-  nombreUsuario: PartidaSinNombre
+  ranking: []
+  nombreUsuarioActual: Jugador
 --- !u!4 &1812215771
 Transform:
   m_ObjectHideFlags: 0
